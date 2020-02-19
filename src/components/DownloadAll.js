@@ -1,10 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import Zip from 'jszip';
 import { saveAs } from 'file-saver';
-const StyledWrapper = styled.button`
-  padding: 1.4rem;
-`;
+import StyledButton from './StyledButton';
 const zip = new Zip();
 export default function DownloadAll({ images = [] }) {
   const handleDownloadAll = () => {
@@ -16,5 +13,9 @@ export default function DownloadAll({ images = [] }) {
       saveAs(content, `icfe-${new Date().getTime()}.zip`);
     });
   };
-  return <StyledWrapper onClick={handleDownloadAll}>下载全部</StyledWrapper>;
+  return (
+    <StyledButton className="download" onClick={handleDownloadAll}>
+      下载全部
+    </StyledButton>
+  );
 }

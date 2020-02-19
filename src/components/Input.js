@@ -4,28 +4,31 @@ import ImageUpload from '../assets/img/image-upload.svg';
 
 const StyledWrapper = styled.section`
   position: relative;
-  width: 20rem;
-  background-color: rgba(222, 222, 222, 0.8);
-  box-shadow: 0 0 6px 0px white;
-  border: 2px dashed #333;
-  border-radius: 5px;
+  width: 22rem;
+  background-color: #d0d4d3;
+  box-shadow: 0 0 6px 0px #d0d4ee;
+  border: 2px dashed #555;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 0.8rem 1rem;
   .img {
     width: 3rem;
     margin-bottom: 1rem;
   }
   .title {
     font-size: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    color: #000;
+    font-weight: 800;
   }
-  .tip {
+  .desc {
     font-size: 0.6rem;
     color: #666;
   }
+
   input[type='file'] {
     position: absolute;
     width: 100%;
@@ -44,7 +47,7 @@ export default function Input({ compressImages }) {
   return (
     <StyledWrapper>
       <input
-        accept="image/*"
+        accept="image/jpg,image/png,image/jpeg"
         multiple
         onChange={handleChange}
         type="file"
@@ -52,8 +55,8 @@ export default function Input({ compressImages }) {
         id="images"
       />
       <img className="img" src={ImageUpload} alt="upload image" />
-      <h2 className="title">纯前端压缩图片（png、jpg）</h2>
-      <h3 className="tip">单张图片不超过5M，最多20张</h3>
+      <h2 className="title">纯浏览器图片压缩工具</h2>
+      <h3 className="desc">所有操作均在浏览器内完成，不用担心图片被上传，仅支持PNG、JPG</h3>
     </StyledWrapper>
   );
 }

@@ -1,5 +1,7 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import imageCompression from 'browser-image-compression';
+import GithubRibbon from './components/GithubRibbon';
+import InfoModal from './components/InfoModal';
 import Loading from './components/Loading';
 import Summary from './components/Summary';
 import Reset from './components/Reset';
@@ -15,7 +17,7 @@ const StyledBody = styled.section`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 4rem 0;
+  padding: 2rem 0;
   .opts {
     width: 18rem;
     display: flex;
@@ -24,7 +26,8 @@ const StyledBody = styled.section`
   }
 `;
 const options = {
-  maxWidthOrHeight: 750, // compressedFile will scale down by ratio to a point that width or height is smaller than maxWidthOrHeight (default: undefined)
+  maxSizeMB: 0.5,
+  maxWidthOrHeight: 600, // compressedFile will scale down by ratio to a point that width or height is smaller than maxWidthOrHeight (default: undefined)
   maxIteration: 2
 };
 const App = () => {
@@ -83,13 +86,15 @@ const App = () => {
         <Input compressImages={handleCompress} />
         {compressing && <Compressing />}
         {images.length > 0 && <Output images={images} />}
-        {images.length > 0 && <Summary totalSize={originSize} totalCompressedSize={compressSize} />}
         {images.length > 0 && (
           <div className="opts">
             <Reset disabled={compressing} resetAll={resetAll} />{' '}
             <DownloadAll disabled={compressing} images={images} />
           </div>
         )}
+        {images.length > 0 && <Summary totalSize={originSize} totalCompressedSize={compressSize} />}
+        <GithubRibbon />
+        <InfoModal />
       </StyledBody>
     </Suspense>
   );

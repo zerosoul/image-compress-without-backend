@@ -2,24 +2,30 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import ImageDownload from '../assets/img/download.svg';
 const StyledWrapper = styled.section`
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+  max-height: 80vh;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0.4rem 1rem 0.8rem 1rem;
-  border: 1px solid #bbcbd0;
+  border: 1px dashed #555;
   border-radius: 4px;
   background-color: rgba(222, 222, 222, 0.5);
   .item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 32rem;
-    padding: 0.4rem 0.8rem;
+    width: 26rem;
+    padding: 0.2rem 0.5rem;
     background-color: #f0f0f0;
-    margin-top: 0.3rem;
+    margin-top: 0.1rem;
     text-align: right;
+    font-size: 0.5rem;
+    border: 1px solid #bbcbd0;
+    background-color: rgba(222, 222, 222, 0.8);
+    font-weight: 600;
     .name {
       padding: 0.2rem 0;
       color: #222;
@@ -30,16 +36,26 @@ const StyledWrapper = styled.section`
     }
     .size {
       color: #7eb631;
-      width: 4rem;
+      width: 3rem;
+      &.before {
+        position: relative;
+        &:after {
+          content: '>';
+          top: 0;
+          right: -1rem;
+          position: absolute;
+        }
+      }
     }
 
     .savePercent {
+      color: #222;
       width: 4rem;
     }
     .download {
-      width: 2rem;
-      &:visited img {
-        background-color: #333;
+      width: 1.2rem;
+      img {
+        width: 1rem;
       }
     }
   }

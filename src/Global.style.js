@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
     outline:none;
     -webkit-text-size-adjust: none;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
-    color:#ffffeb;
   }
   html{
     -webkit-font-smoothing: antialiased;
