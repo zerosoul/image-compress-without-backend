@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/zerosoul/image-compress-without-backend/issues"
   },
-  "homepage": "https://zerosoul.github.io/image-compress-without-backend",
+  "homepage": "https://works.yangerxiao.com/icfe/",
   "dependencies": {
     "b64-to-blob": "^1.2.19",
     "browser-image-compression": "^1.0.6",
