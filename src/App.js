@@ -26,8 +26,8 @@ const StyledBody = styled.section`
   }
 `;
 const options = {
-  maxSizeMB: 0.5,
-  maxWidthOrHeight: 600, // compressedFile will scale down by ratio to a point that width or height is smaller than maxWidthOrHeight (default: undefined)
+  maxSizeMB: 0.4,
+  maxWidthOrHeight: 750, // compressedFile will scale down by ratio to a point that width or height is smaller than maxWidthOrHeight (default: undefined)
   maxIteration: 2
 };
 const App = () => {
