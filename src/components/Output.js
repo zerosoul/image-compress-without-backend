@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { getSizeFormated } from '../utils';
+
 import ImageDownload from '../assets/img/download.svg';
+
 const StyledWrapper = styled.section`
   margin-top: 1.5rem;
   max-height: 80vh;
@@ -37,15 +40,9 @@ const StyledWrapper = styled.section`
     .size {
       color: #7eb631;
       width: 3rem;
-      &.before {
-        position: relative;
-        &:after {
-          content: '>';
-          top: 0;
-          right: -1rem;
-          position: absolute;
-        }
-      }
+    }
+    .arrow {
+      color: #7eb631;
     }
 
     .savePercent {
@@ -75,8 +72,9 @@ export default function Output({ images }) {
         return (
           <div key={img.name} className="item">
             <span className="name">{name}</span>
-            <span className="size before">{`${(size / 1024).toFixed(2)}KB`}</span>
-            <span className="size after">{`${(compressSize / 1024).toFixed(2)}KB`}</span>
+            <span className="size before">{`${getSizeFormated(size)}`}</span>
+            <span className="arrow">&gt;</span>
+            <span className="size after">{`${getSizeFormated(compressSize)}`}</span>
             <div className="savePercent">{`-${Math.floor((reduceSize * 100) / size)}%`}</div>
             <a
               href={

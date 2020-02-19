@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { getSizeFormated } from '../utils';
 const StyledWrapper = styled.section`
   padding: 1.4rem 1.6rem;
   background-color: rgba(222, 222, 222, 0.8);
@@ -24,15 +25,11 @@ const StyledWrapper = styled.section`
 `;
 export default function Summary({ totalSize = 0, totalCompressedSize = 0 }) {
   const reduceSize = totalSize - totalCompressedSize;
-  const humanSize =
-    reduceSize / 1024 > 1024
-      ? `${(reduceSize / 1024 / 1024).toFixed(2)}M`
-      : `${(reduceSize / 1024).toFixed(2)}KB`;
   return (
     <StyledWrapper>
       <div className="tip">为您节省：</div>
       <div className="percent">{`${Math.floor((reduceSize * 100) / totalSize)}%`}</div>
-      <div className="size">{`${humanSize}`}</div>
+      <div className="size">{`${getSizeFormated(reduceSize)}`}</div>
     </StyledWrapper>
   );
 }
