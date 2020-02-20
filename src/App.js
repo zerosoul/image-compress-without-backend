@@ -18,7 +18,7 @@ const StyledBody = styled.section`
   flex-direction: column;
   padding: 2rem 0;
   .opts {
-    width: 18rem;
+    width: 15rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

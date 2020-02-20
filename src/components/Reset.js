@@ -9,7 +9,7 @@ export default function Reset({ resetAll }) {
   };
   return (
     <StyledButton onClick={handleClick} className="reset">
-      清空
+      重置
     </StyledButton>
   );
 }

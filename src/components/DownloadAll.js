@@ -15,7 +15,7 @@ export default function DownloadAll({ images = [] }) {
   };
   return (
     <StyledButton className="download" onClick={handleDownloadAll}>
-      下载全部
+      打包
     </StyledButton>
   );
 }

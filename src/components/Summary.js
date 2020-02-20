@@ -2,13 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { getSizeFormated } from '../utils';
 const StyledWrapper = styled.section`
-  padding: 1.4rem 1.6rem;
+  padding: 1rem 1.2rem;
   background-color: rgba(222, 222, 222, 0.8);
   border: 2px dashed #333;
   border-radius: 5px;
   display: flex;
   align-items: center;
-
   .tip {
     font-size: 1rem;
   }
