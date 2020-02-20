@@ -21,14 +21,15 @@ const StyledWrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+
   .loading {
     width: 2rem;
     animation: ${AniRotate} 1s infinite;
   }
 `;
-export default function Compressing() {
+export default function Compressing({ visible = false }) {
   return (
-    <StyledWrapper>
+    <StyledWrapper className={visible ? '' : 'hidden'}>
       <img className="loading" src={ImageLoading} alt="loading" />
     </StyledWrapper>
   );

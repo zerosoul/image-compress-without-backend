@@ -16,6 +16,7 @@ const StyledWrapper = styled.section`
   border: 1px dashed #555;
   border-radius: 4px;
   background-color: rgba(222, 222, 222, 0.5);
+
   .item {
     display: flex;
     justify-content: space-between;
@@ -51,9 +52,13 @@ const StyledWrapper = styled.section`
       width: 4rem;
     }
     .download {
-      width: 1.2rem;
+      width: 1rem;
       img {
-        width: 1rem;
+        width: 100%;
+        filter: drop-shadow(1px 1px 1px #333);
+        &.clicked {
+          filter: none;
+        }
       }
     }
   }
@@ -63,8 +68,11 @@ export default function Output({ images }) {
   useEffect(() => {
     console.log({ images });
   }, [images]);
+  const handleDownloadClick = e => {
+    e.target.classList.add('clicked');
+  };
   return (
-    <StyledWrapper>
+    <StyledWrapper className={images.length === 0 ? 'hidden' : ''}>
       {images.map(img => {
         const { name, size, compressed = {} } = img;
         let { size: compressSize } = compressed;
@@ -86,7 +94,7 @@ export default function Output({ images }) {
               download={`icfe-${name}`}
               className="download"
             >
-              <img src={ImageDownload} alt="download" />
+              <img onClick={handleDownloadClick} src={ImageDownload} alt="download" />
             </a>
           </div>
         );

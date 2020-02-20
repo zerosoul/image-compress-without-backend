@@ -23,6 +23,9 @@ const StyledBody = styled.section`
     justify-content: space-between;
     align-items: center;
   }
+  .hidden {
+    visibility: hidden;
+  }
 `;
 const options = {
   maxSizeMB: 0.4,
@@ -83,15 +86,17 @@ const App = () => {
     <StyledBody>
       <LeaveConfirm trigger={images.length > 0} />
       <Input compressImages={handleCompress} />
-      {compressing && <Compressing />}
-      {images.length > 0 && <Output images={images} />}
-      {images.length > 0 && (
-        <div className="opts">
-          <Reset disabled={compressing} resetAll={resetAll} />{' '}
-          <DownloadAll disabled={compressing} images={images} />
-        </div>
-      )}
-      {images.length > 0 && <Summary totalSize={originSize} totalCompressedSize={compressSize} />}
+      <Compressing visible={compressing} />
+      <Output images={images} />
+      <div className={`opts ${images.length === 0 ? 'hidden' : ''}`}>
+        <Reset disabled={compressing} resetAll={resetAll} />{' '}
+        <DownloadAll disabled={compressing} images={images} />
+      </div>
+      <Summary
+        visible={images.length > 0}
+        totalSize={originSize}
+        totalCompressedSize={compressSize}
+      />
       <GithubRibbon />
       <InfoModal />
     </StyledBody>

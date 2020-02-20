@@ -28,7 +28,9 @@ const GlobalStyle = createGlobalStyle`
     background-size:cover;
     background-repeat:no-repeat;
   }
-
+ .hidden {
+    visibility: hidden;
+  }
   @media screen and (min-width: 320px){
       html {
           font-size: 12px;

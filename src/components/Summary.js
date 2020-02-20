@@ -8,6 +8,7 @@ const StyledWrapper = styled.section`
   border-radius: 5px;
   display: flex;
   align-items: center;
+
   .tip {
     font-size: 1rem;
   }
@@ -23,10 +24,10 @@ const StyledWrapper = styled.section`
     margin-left: 1rem;
   }
 `;
-export default function Summary({ totalSize = 0, totalCompressedSize = 0 }) {
+export default function Summary({ visible = false, totalSize = 0, totalCompressedSize = 0 }) {
   const reduceSize = totalSize - totalCompressedSize;
   return (
-    <StyledWrapper>
+    <StyledWrapper className={visible ? '' : 'hidden'}>
       <div className="tip">为您节省：</div>
       <div className="percent">{`${Math.floor((reduceSize * 100) / totalSize)}%`}</div>
       <div className="size">{`${getSizeFormated(reduceSize)}`}</div>

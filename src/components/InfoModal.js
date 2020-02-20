@@ -36,7 +36,7 @@ const StyledModal = styled.section`
   position: fixed;
   right: 0.5rem;
   bottom: 2.5rem;
-  background: rgba(181, 177, 187, 0.8);
+  background: #d0d4d3;
   padding: 1rem;
   animation: ${AniSlideLeft} 1s;
   padding: 1rem;
@@ -46,7 +46,7 @@ const StyledModal = styled.section`
     margin-bottom: 1.8rem;
     position: relative;
     img {
-      width: 100%;
+      width: 80%;
       border: 1px solid rgba(181, 177, 187);
     }
     &:after {
@@ -79,8 +79,8 @@ const StyledModal = styled.section`
     font-size: 0.5rem;
   }
 `;
-const Modal = () => (
-  <StyledModal className="idleHide">
+const Modal = ({ visible = false }) => (
+  <StyledModal className={visible ? '' : 'hidden'}>
     <div className="line title">纯浏览器图片压缩工具</div>
     <div className="line github">
       <GitHubButton
@@ -123,7 +123,7 @@ export default function InfoModal() {
 
   return (
     <>
-      {visible ? <Modal /> : null}
+      <Modal visible={visible} />
 
       <InfoButton
         className={`idleHide ${visible ? 'close' : ''}`}

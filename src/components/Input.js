@@ -14,6 +14,9 @@ const StyledWrapper = styled.section`
   justify-content: center;
   align-items: center;
   padding: 0.8rem 1rem;
+  &:hover {
+    opacity: 0.6;
+  }
   .img {
     width: 3rem;
     margin-bottom: 1rem;
@@ -53,6 +56,7 @@ export default function Input({ compressImages }) {
         type="file"
         name="images"
         id="images"
+        title="请上传图片，可多选"
       />
       <img className="img" src={ImageUpload} alt="upload image" />
       <h2 className="title">纯浏览器图片压缩工具</h2>
