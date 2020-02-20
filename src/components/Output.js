@@ -30,6 +30,7 @@ const StyledWrapper = styled.section`
     background-color: rgba(222, 222, 222, 0.8);
     font-weight: 600;
     .name {
+      text-align: left;
       padding: 0.2rem 0;
       color: #222;
       width: 10rem;

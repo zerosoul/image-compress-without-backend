@@ -1,8 +1,8 @@
-import React, { Suspense, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import imageCompression from 'browser-image-compression';
 import GithubRibbon from './components/GithubRibbon';
+import LeaveConfirm from './components/LeaveConfirm';
 import InfoModal from './components/InfoModal';
-import Loading from './components/Loading';
 import Summary from './components/Summary';
 import Reset from './components/Reset';
 import Compressing from './components/Compressing';
@@ -10,7 +10,6 @@ import DownloadAll from './components/DownloadAll';
 import Input from './components/Input';
 import Output from './components/Output';
 
-// const Footer = lazy(() => import('./components/Footer'));
 import styled from 'styled-components';
 const StyledBody = styled.section`
   display: flex;
@@ -81,22 +80,21 @@ const App = () => {
     setImages([]);
   };
   return (
-    <Suspense fallback={<Loading />}>
-      <StyledBody>
-        <Input compressImages={handleCompress} />
-        {compressing && <Compressing />}
-        {images.length > 0 && <Output images={images} />}
-        {images.length > 0 && (
-          <div className="opts">
-            <Reset disabled={compressing} resetAll={resetAll} />{' '}
-            <DownloadAll disabled={compressing} images={images} />
-          </div>
-        )}
-        {images.length > 0 && <Summary totalSize={originSize} totalCompressedSize={compressSize} />}
-        <GithubRibbon />
-        <InfoModal />
-      </StyledBody>
-    </Suspense>
+    <StyledBody>
+      <LeaveConfirm trigger={images.length > 0} />
+      <Input compressImages={handleCompress} />
+      {compressing && <Compressing />}
+      {images.length > 0 && <Output images={images} />}
+      {images.length > 0 && (
+        <div className="opts">
+          <Reset disabled={compressing} resetAll={resetAll} />{' '}
+          <DownloadAll disabled={compressing} images={images} />
+        </div>
+      )}
+      {images.length > 0 && <Summary totalSize={originSize} totalCompressedSize={compressSize} />}
+      <GithubRibbon />
+      <InfoModal />
+    </StyledBody>
   );
 };
 export default App;
