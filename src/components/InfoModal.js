@@ -108,8 +108,8 @@ const Modal = ({ visible = false }) => (
         Fork
       </GitHubButton>
     </div>
-    <div className="reward" title="如果有帮住到您，欢迎打赏~">
-      <img src={ImageReward} alt="reward" title="如果有帮住到您，欢迎打赏~" />
+    <div className="reward" title="如果有帮助到您，欢迎打赏~">
+      <img src={ImageReward} alt="reward" title="如果有帮助到您，欢迎打赏~" />
     </div>
     <div className="copyright">
       <span> Copyright © {new Date().getFullYear()} By </span>
