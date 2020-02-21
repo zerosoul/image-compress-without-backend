@@ -5,7 +5,6 @@ import LeaveConfirm from './components/LeaveConfirm';
 import InfoModal from './components/InfoModal';
 import Summary from './components/Summary';
 import Reset from './components/Reset';
-import Compressing from './components/Compressing';
 import DownloadAll from './components/DownloadAll';
 import Input from './components/Input';
 import Output from './components/Output';
@@ -41,6 +40,9 @@ const App = () => {
     setCompressing(true);
     console.log(files);
     const fileArr = [...files];
+    setImages(prev => {
+      return [...prev, ...fileArr];
+    });
     const ds = [];
     try {
       const promises = [...files].map(async img => {
@@ -50,6 +52,12 @@ const App = () => {
         console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
         console.log(`compressedFile size ${compressedFile.size / 1024} KB`); // smaller than maxSizeMB
         ds.push(compressedFile);
+        img.compressed = compressedFile;
+        setImages(prev => {
+          const tmpIdx = prev.findIndex(file => file.name == img.name);
+          prev[tmpIdx] = img;
+          return [...prev];
+        });
       });
 
       await Promise.all(promises);
@@ -57,22 +65,14 @@ const App = () => {
       console.log(error);
     }
     console.log({ ds });
-    fileArr.forEach((file, idx) => {
-      file.compressed = ds[idx];
-    });
-    setImages(prev => {
-      return [...prev, ...fileArr];
-    });
     setCompressing(false);
   };
   useEffect(() => {
     let originSize = 0;
     let compressedSize = 0;
     images.forEach(img => {
-      const {
-        size,
-        compressed: { size: cSize }
-      } = img;
+      const { size, compressed } = img;
+      const { size: cSize } = compressed || { size: 0 };
       originSize = originSize + size;
       compressedSize = compressedSize + (cSize > size ? size : cSize);
     });
@@ -86,7 +86,6 @@ const App = () => {
     <StyledBody>
       <LeaveConfirm trigger={images.length > 0} />
       <Input compressImages={handleCompress} />
-      <Compressing visible={compressing} />
       <Output images={images} />
       <div className={`opts ${images.length === 0 ? 'hidden' : ''}`}>
         <Reset disabled={compressing} resetAll={resetAll} />{' '}

@@ -3,7 +3,7 @@ import Zip from 'jszip';
 import { saveAs } from 'file-saver';
 import StyledButton from './StyledButton';
 const zip = new Zip();
-export default function DownloadAll({ images = [] }) {
+export default function DownloadAll({ disabled = false, images = [] }) {
   const handleDownloadAll = () => {
     images.forEach(img => {
       zip.file(img.name, img.compressed);
@@ -14,7 +14,7 @@ export default function DownloadAll({ images = [] }) {
     });
   };
   return (
-    <StyledButton className="download" onClick={handleDownloadAll}>
+    <StyledButton disabled={disabled} className="download" onClick={handleDownloadAll}>
       打包
     </StyledButton>
   );

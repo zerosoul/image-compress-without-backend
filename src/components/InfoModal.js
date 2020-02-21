@@ -38,8 +38,12 @@ const StyledModal = styled.section`
   bottom: 2.5rem;
   background: #d0d4d3;
   padding: 1rem;
-  animation: ${AniSlideLeft} 1s;
+  visibility: hidden;
   padding: 1rem;
+  &.visible {
+    visibility: visible;
+    animation: ${AniSlideLeft} 1s;
+  }
   .reward {
     width: 14rem;
     align-self: flex-start;
@@ -80,7 +84,7 @@ const StyledModal = styled.section`
   }
 `;
 const Modal = ({ visible = false }) => (
-  <StyledModal className={visible ? '' : 'hidden'}>
+  <StyledModal className={visible ? 'visible' : ''}>
     <div className="line title">纯浏览器图片压缩工具</div>
     <div className="line github">
       <GitHubButton

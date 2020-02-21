@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { getSizeFormated } from '../utils';
+import { AniRotate } from './animates';
+
+import ImageLoading from '../assets/img/loading.svg';
 
 import ImageDownload from '../assets/img/download.svg';
 
@@ -12,7 +15,7 @@ const StyledWrapper = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0.4rem 1rem 0.8rem 1rem;
+  padding: 0.4rem 1.2rem 0.8rem 1.2rem;
   border: 1px dashed #555;
   border-radius: 4px;
   background-color: rgba(222, 222, 222, 0.5);
@@ -30,6 +33,24 @@ const StyledWrapper = styled.section`
     border: 1px solid #bbcbd0;
     background-color: rgba(222, 222, 222, 0.8);
     font-weight: 600;
+    &.compressing {
+      position: relative;
+      &:after {
+        content: '';
+        background-image: url(${ImageLoading});
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 0.8rem;
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        position: absolute;
+        right: -1.2rem;
+        top: 50%;
+        margin-top: -0.5rem;
+        animation: ${AniRotate} 1s infinite;
+      }
+    }
     .name {
       text-align: left;
       padding: 0.2rem 0;
@@ -49,7 +70,7 @@ const StyledWrapper = styled.section`
 
     .savePercent {
       color: #222;
-      width: 4rem;
+      width: 3rem;
     }
     .download {
       width: 1rem;
@@ -74,20 +95,22 @@ export default function Output({ images }) {
   return (
     <StyledWrapper className={images.length === 0 ? 'hidden' : ''}>
       {images.map(img => {
-        const { name, size, compressed = {} } = img;
-        let { size: compressSize } = compressed;
+        const { name, size, compressed } = img;
+        let { size: compressSize } = compressed || { size: 0 };
         compressSize = compressSize > size ? size : compressSize;
-        const reduceSize = size - compressSize;
+        const reduceSize = compressSize == 0 ? 0 : size - compressSize;
         return (
-          <div key={img.name} className="item">
+          <div key={name} className={`item ${compressSize == 0 ? 'compressing' : ''}`}>
             <span className="name">{name}</span>
             <span className="size before">{`${getSizeFormated(size)}`}</span>
             <span className="arrow">&gt;</span>
-            <span className="size after">{`${getSizeFormated(compressSize)}`}</span>
+            <span className="size after">{`${
+              compressSize == 0 ? '?' : getSizeFormated(compressSize)
+            }`}</span>
             <div className="savePercent">{`-${Math.floor((reduceSize * 100) / size)}%`}</div>
             <a
               href={
-                compressed.name !== undefined
+                compressSize !== undefined
                   ? URL.createObjectURL(reduceSize == 0 ? img : compressed)
                   : '#'
               }

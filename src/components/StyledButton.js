@@ -16,6 +16,9 @@ const StyledButton = styled.button`
   letter-spacing: 0.1rem;
   color: #fff;
   margin: 1rem;
+  &[disabled] {
+    opacity: 0.6;
+  }
   &.reset {
     background-color: #1081de;
     border-bottom-color: #056ec5;
