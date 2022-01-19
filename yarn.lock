@@ -1083,14 +1083,6 @@ find-up@^5.0.0:
     locate-path "^6.0.0"
     path-exists "^4.0.0"
 
-fork-me-on-gh@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.npmmirror.com/fork-me-on-gh/download/fork-me-on-gh-2.1.1.tgz#76a44ea9d12e7a06d1b789a36bdfef9b51f28de0"
-  integrity sha1-dqROqdEuegbRt4mja9/vm1HyjeA=
-  dependencies:
-    highlight.js "^9.15.10"
-    react-syntax-highlight "^15.3.1"
-
 fs-extra@^10.0.0:
   version "10.0.0"
   resolved "https://registry.nlark.com/fs-extra/download/fs-extra-10.0.0.tgz#9ff61b655dde53fb34a82df84bb214ce802e17c1"
@@ -1179,11 +1171,6 @@ has@^1.0.3:
   integrity sha1-ci18v8H2qoJB8W3YFOAR4fQeh5Y=
   dependencies:
     function-bind "^1.1.1"
-
-highlight.js@^9.12.0, highlight.js@^9.15.10:
-  version "9.18.5"
-  resolved "https://registry.npmmirror.com/highlight.js/download/highlight.js-9.18.5.tgz#d18a359867f378c138d6819edfc2a8acd5f29825"
-  integrity sha512-a5bFyofd/BHCX52/8i8uJkjr9DYwXIPnM/plwI6W7ezItLGqzt7X2G2nXuYSfsIJdkwwj/g9DG1LkcGJI/dDoA==
 
 hoist-non-react-statics@^3.0.0:
   version "3.3.2"
@@ -1443,7 +1430,7 @@ log-update@^4.0.0:
     slice-ansi "^4.0.0"
     wrap-ansi "^6.2.0"
 
-loose-envify@^1.1.0, loose-envify@^1.4.0:
+loose-envify@^1.1.0:
   version "1.4.0"
   resolved "https://registry.nlark.com/loose-envify/download/loose-envify-1.4.0.tgz?cache=0&sync_timestamp=1627566748051&other_urls=https%3A%2F%2Fregistry.nlark.com%2Floose-envify%2Fdownload%2Floose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   integrity sha1-ce5R+nvkyuwaY4OffmgtgTLTDK8=
@@ -1706,15 +1693,6 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.npm.taobao.org/process-nextick-args/download/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha1-eCDZsWEgzFXKmud5JoCufbptf+I=
 
-prop-types@^15.5.10:
-  version "15.8.1"
-  resolved "https://registry.npmmirror.com/prop-types/download/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
-  integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
-  dependencies:
-    loose-envify "^1.4.0"
-    object-assign "^4.1.1"
-    react-is "^16.13.1"
-
 punycode@^2.1.0:
   version "2.1.1"
   resolved "https://registry.nlark.com/punycode/download/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
@@ -1746,17 +1724,12 @@ react-github-btn@^1.2.1:
   dependencies:
     github-buttons "^2.8.0"
 
-react-github-fork-ribbon@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.npmmirror.com/react-github-fork-ribbon/download/react-github-fork-ribbon-0.6.0.tgz#8b7454fec5bd5481af7fdf6d0fc8aa7653373301"
-  integrity sha1-i3RU/sW9VIGvf99tD8iqdlM3MwE=
-
 react-icons@^4.3.1:
   version "4.3.1"
   resolved "https://registry.npmmirror.com/react-icons/download/react-icons-4.3.1.tgz#2fa92aebbbc71f43d2db2ed1aed07361124e91ca"
   integrity sha1-L6kq67vHH0PS2y7RrtBzYRJOkco=
 
-react-is@^16.13.1, react-is@^16.7.0:
+react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.npmmirror.com/react-is/download/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=
@@ -1778,14 +1751,6 @@ react-share@^4.4.0:
   dependencies:
     classnames "^2.2.5"
     jsonp "^0.2.1"
-
-react-syntax-highlight@^15.3.1:
-  version "15.3.1"
-  resolved "https://registry.npmmirror.com/react-syntax-highlight/download/react-syntax-highlight-15.3.1.tgz#b44f6f77e2783e8f74c4b30b50d5a886cc35fc1f"
-  integrity sha1-tE9vd+J4Po90xLMLUNWohsw1/B8=
-  dependencies:
-    highlight.js "^9.12.0"
-    prop-types "^15.5.10"
 
 react@^17.0.2:
   version "17.0.2"
