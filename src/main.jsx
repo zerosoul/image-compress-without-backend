@@ -1,15 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './App';
 import GlobalStyle from './Global.style';
 
-import register from './registerServiceWorker';
-
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <>
     <GlobalStyle />
     <App />
-  </>,
-  document.getElementById('root')
+  </>
 );
-register();
