@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import imageCompression from 'browser-image-compression';
-import GithubRibbon from './components/GithubRibbon';
 import LeaveConfirm from './components/LeaveConfirm';
 import InfoModal from './components/InfoModal';
 import Summary from './components/Summary';
@@ -29,23 +28,23 @@ const StyledBody = styled.section`
 const options = {
   maxSizeMB: 0.4,
   maxWidthOrHeight: 750, // compressedFile will scale down by ratio to a point that width or height is smaller than maxWidthOrHeight (default: undefined)
-  maxIteration: 2
+  maxIteration: 2,
 };
 const App = () => {
   const [compressing, setCompressing] = useState(false);
   const [originSize, setOriginSize] = useState(0);
   const [compressSize, setCompressSize] = useState(0);
   const [images, setImages] = useState([]);
-  const handleCompress = async files => {
+  const handleCompress = async (files) => {
     setCompressing(true);
     console.log(files);
     const fileArr = [...files];
-    setImages(prev => {
+    setImages((prev) => {
       return [...prev, ...fileArr];
     });
     const ds = [];
     try {
-      const promises = [...files].map(async img => {
+      const promises = [...files].map(async (img) => {
         console.log(`Received File`, img);
         // const blob = b64toBlob(e.target.result);
         const compressedFile = await imageCompression(img, options);
@@ -53,8 +52,8 @@ const App = () => {
         console.log(`compressedFile size ${compressedFile.size / 1024} KB`); // smaller than maxSizeMB
         ds.push(compressedFile);
         img.compressed = compressedFile;
-        setImages(prev => {
-          const tmpIdx = prev.findIndex(file => file.name == img.name);
+        setImages((prev) => {
+          const tmpIdx = prev.findIndex((file) => file.name == img.name);
           prev[tmpIdx] = img;
           return [...prev];
         });
@@ -70,7 +69,7 @@ const App = () => {
   useEffect(() => {
     let originSize = 0;
     let compressedSize = 0;
-    images.forEach(img => {
+    images.forEach((img) => {
       const { size, compressed } = img;
       const { size: cSize } = compressed || { size: 0 };
       originSize = originSize + size;
@@ -96,7 +95,6 @@ const App = () => {
         totalSize={originSize}
         totalCompressedSize={compressSize}
       />
-      <GithubRibbon />
       <InfoModal />
     </StyledBody>
   );
